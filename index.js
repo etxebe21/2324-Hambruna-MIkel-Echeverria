@@ -16,6 +16,7 @@ const fetchAsyncData = async () => {
        listDonutsAndCalories(dataDonuts); 
        listDonutsAndCarbohydrates(dataDonuts);
        donutsMediumCalories(dataDonuts);
+       sumFatSaturated(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -108,5 +109,24 @@ const donutsMediumCalories = (dataDonuts) => {
     const mediumCalories = totalCalories / dataDonuts.length;
     console.log(`La media de calorías de todos los donuts es: ${mediumCalories}`);
 }
+
+const sumFatSaturated = (dataDonuts) => {
+    
+    let totalSaturatedFat = 0;
+
+    dataDonuts.forEach(donut => {
+        const saturatedFat = donut.nutrition_facts.nutrition.fat.fat_type.saturated;
+        totalSaturatedFat += parseFloat(saturatedFat.replace(/[^\d.]/g, ''));
+    });
+
+    console.log(`La suma de grasas saturadas de todos los donuts es: ${totalSaturatedFat}g`);
+}
+
+
+
+
+
+
+
         // console.log(sugar.replace(/[^\d]/g, ''));
         //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)

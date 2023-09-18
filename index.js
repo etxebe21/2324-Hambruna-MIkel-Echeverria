@@ -12,7 +12,9 @@ const fetchAsyncData = async () => {
        mostSugarDonuts(dataDonuts);
        mostIronDonuts(dataDonuts);
        mostProteinDonuts(dataDonuts);
-       mostFibreDonuts(dataDonuts);  
+       mostFibreDonuts(dataDonuts); 
+       listDonutsAndCalories(dataDonuts); 
+       listDonutsAndCarbohydrates(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -75,7 +77,23 @@ const mostFibreDonuts = (dataDonuts) => {
         console.log(`Los donuts con menos fibra son:  ${minFibreDonutsArray.map(donut => donut.name).join(', ')}`);   
 }
 
+const listDonutsAndCalories = (dataDonuts) => {
+    dataDonuts.forEach(donut => {
+        const calories = donut.nutrition_facts.nutrition.calories;
+        console.log(`${donut.name} --> Calorías: ${calories}`);
+    });
+}
 
+const listDonutsAndCarbohydrates = (dataDonuts) => {
+
+    dataDonuts.forEach(donut => {
+        const carbohydrate = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre;
+        const sugar = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars;
+        const dailyValue = donut.nutrition_facts.nutrition.carbohydrate.daily_value;
+        const amount = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.amount;
+        console.log(`${donut.name} --> ValorDiario: ${dailyValue} --> Cantidad: ${amount} --> Fibra: ${carbohydrate}g --> Azucar: ${sugar}g`);
+    })
+}
 
  
         // console.log(sugar.replace(/[^\d]/g, ''));

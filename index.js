@@ -18,6 +18,7 @@ const fetchAsyncData = async () => {
        donutsMediumCalories(dataDonuts);
        sumFatSaturated(dataDonuts);
        listDonutsAndBatters(dataDonuts);
+       listDonutsAndToppings(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -125,7 +126,7 @@ const sumFatSaturated = (dataDonuts) => {
 
 
 const listDonutsAndBatters = (dataDonuts) => {
-    
+
     dataDonuts.forEach(donut => {
         const batters = donut.batters.batter; 
    
@@ -134,6 +135,17 @@ const listDonutsAndBatters = (dataDonuts) => {
         
     });
 }
+
+const listDonutsAndToppings = (dataDonuts) => {
+    
+    dataDonuts.forEach(donut => {
+        const toppings = donut.topping; 
+   
+        const toppingTypes = toppings.map(topping => topping.type);
+            console.log(`${donut.name} --> Tipos de Toppings: ${toppingTypes.join(", ")}`);     
+    });
+}
+
 
 
         // console.log(sugar.replace(/[^\d]/g, ''));

@@ -15,6 +15,7 @@ const fetchAsyncData = async () => {
        mostFibreDonuts(dataDonuts); 
        listDonutsAndCalories(dataDonuts); 
        listDonutsAndCarbohydrates(dataDonuts);
+       donutsMediumCalories(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -95,6 +96,17 @@ const listDonutsAndCarbohydrates = (dataDonuts) => {
     })
 }
 
- 
+const donutsMediumCalories = (dataDonuts) => {
+    
+    let totalCalories = 0;
+
+    dataDonuts.forEach(donut => {
+        const calories = donut.nutrition_facts.nutrition.calories;
+        totalCalories += calories;
+    });
+
+    const mediumCalories = totalCalories / dataDonuts.length;
+    console.log(`La media de calorías de todos los donuts es: ${mediumCalories}`);
+}
         // console.log(sugar.replace(/[^\d]/g, ''));
         //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)

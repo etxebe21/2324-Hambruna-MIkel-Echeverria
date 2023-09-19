@@ -21,6 +21,7 @@ const fetchAsyncData = async () => {
        listDonutsAndToppings(dataDonuts);
        changeSaturatedDonut(dataDonuts);
        changeAmountCarbohydrateDonut(dataDonuts);
+       changeDailyValueDonut(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -166,6 +167,17 @@ const changeSaturatedDonut = (dataDonuts) => {
          }
          console.log(`${donut.name}: ${newAmount}`);
      });
+ }
+
+
+ const changeDailyValueDonut = (dataDonuts) => {
+
+
+    dataDonuts.forEach(donut => {
+
+        const newDailyValue = donut.nutrition_facts.nutrition.carbohydrate.daily_value = 53+"%";
+        console.log(`${donut.name} --> Daily_value: ${newDailyValue}`);
+    })
  }
         // console.log(sugar.replace(/[^\d]/g, ''));
         //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)

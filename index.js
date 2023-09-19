@@ -12,7 +12,7 @@ const fetchAsyncData = async () => {
        mostSugarDonuts(dataDonuts);
        mostIronDonuts(dataDonuts);
        mostProteinDonuts(dataDonuts);
-       mostFibreDonuts(dataDonuts); 
+       minFibreDonuts(dataDonuts); 
        listDonutsAndCalories(dataDonuts); 
        listDonutsAndCarbohydrates(dataDonuts);
        donutsMediumCalories(dataDonuts);
@@ -40,6 +40,7 @@ const mostSugarDonuts = (dataDonuts) => {
     
     mostSugarDonut = dataDonuts.sort((x, y) => y.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars 
         - x.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars);
+        console.log("1 --------------------------------------------------------------------------------------");
         console.log(`El donut con más azúcar es :  ${mostSugarDonut[0].name}`);
 
 }
@@ -68,7 +69,7 @@ const mostProteinDonuts = (dataDonuts) => {
         console.log(`El donut con más proteina es :  ${mostProteinDonut[0].name}`);
 }
 
-const mostFibreDonuts = (dataDonuts) => {
+const minFibreDonuts = (dataDonuts) => {
 
     let minFibreDonut = dataDonuts.forEach(donut => {
         donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre = 
@@ -84,6 +85,7 @@ const mostFibreDonuts = (dataDonuts) => {
         donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.fibre === minFibreDonuts);
 
         console.log(`Los donuts con menos fibra son:  ${minFibreDonutsArray.map(donut => donut.name).join(', ')}`);   
+        console.log("2 --------------------------------------------------------------------------------------");
 }
 
 const listDonutsAndCalories = (dataDonuts) => {
@@ -91,6 +93,7 @@ const listDonutsAndCalories = (dataDonuts) => {
         const calories = donut.nutrition_facts.nutrition.calories;
         console.log(`${donut.name} --> Calorías: ${calories}`);
     });
+    console.log("--------------------------------------------------------------------------------------");
 }
 
 const listDonutsAndCarbohydrates = (dataDonuts) => {
@@ -102,6 +105,7 @@ const listDonutsAndCarbohydrates = (dataDonuts) => {
         const amount = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.amount;
         console.log(`${donut.name} --> ValorDiario: ${dailyValue} --> Cantidad: ${amount} --> Fibra: ${carbohydrate}g --> Azucar: ${sugar}g`);
     })
+    console.log("--------------------------------------------------------------------------------------");
 }
 
 const donutsMediumCalories = (dataDonuts) => {
@@ -115,6 +119,7 @@ const donutsMediumCalories = (dataDonuts) => {
 
     const mediumCalories = totalCalories / dataDonuts.length;
     console.log(`La media de calorías de todos los donuts es: ${mediumCalories}`);
+    console.log("--------------------------------------------------------------------------------------");
 }
 
 const sumFatSaturated = (dataDonuts) => {
@@ -127,6 +132,7 @@ const sumFatSaturated = (dataDonuts) => {
     });
 
     console.log(`La suma de grasas saturadas de todos los donuts es: ${totalSaturatedFat}g`);
+    console.log("3  --------------------------------------------------------------------------------------");
 }
 
 
@@ -139,6 +145,7 @@ const listDonutsAndBatters = (dataDonuts) => {
             console.log(`${donut.name} --> Tipos de Masas: ${batterTypes.join(", ")}`);
         
     });
+    console.log("--------------------------------------------------------------------------------------");
 }
 
 const listDonutsAndToppings = (dataDonuts) => {
@@ -149,6 +156,7 @@ const listDonutsAndToppings = (dataDonuts) => {
         const toppingTypes = toppings.map(topping => topping.type);
             console.log(`${donut.name} --> Tipos de Toppings: ${toppingTypes.join(", ")}`);     
     });
+    console.log("5--------------------------------------------------------------------------------------");
 }
 
 const changeSaturatedDonut = (dataDonuts) => {
@@ -159,6 +167,7 @@ const changeSaturatedDonut = (dataDonuts) => {
          }
          console.log(`${donut.name}: ${newTrans}`);
      });
+     console.log("--------------------------------------------------------------------------------------");
  }
 
  const changeAmountCarbohydrateDonut = (dataDonuts) => {
@@ -169,6 +178,7 @@ const changeSaturatedDonut = (dataDonuts) => {
          }
          console.log(`${donut.name}: ${newAmount}`);
      });
+     console.log("--------------------------------------------------------------------------------------");
  }
 
 const createNewVitamine = (dataDonuts) => {
@@ -185,6 +195,7 @@ const createNewVitamine = (dataDonuts) => {
         }
         
     });
+    console.log("--------------------------------------------------------------------------------------");
 }
 
 const changeDailyValueDonut = (dataDonuts) => {
@@ -195,6 +206,7 @@ const changeDailyValueDonut = (dataDonuts) => {
         const newDailyValue = donut.nutrition_facts.nutrition.carbohydrate.daily_value = 53+"%";
         console.log(`${donut.name} --> Daily_value: ${newDailyValue}`);
     })
+    console.log("--------------------------------------------------------------------------------------");
  }
 
 const createAlergenAtribute = (dataDonuts) => {
@@ -212,6 +224,7 @@ const createAlergenAtribute = (dataDonuts) => {
             console.log(`${donut.name} --> Alergen:` ,donut.alergen);
         }
     });
+    console.log("--------------------------------------------------------------------------------------");
 }
 
        

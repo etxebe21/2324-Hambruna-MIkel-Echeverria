@@ -19,6 +19,8 @@ const fetchAsyncData = async () => {
        sumFatSaturated(dataDonuts);
        listDonutsAndBatters(dataDonuts);
        listDonutsAndToppings(dataDonuts);
+       changeSaturatedDonut(dataDonuts);
+       changeAmountCarbohydrateDonut(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -146,7 +148,24 @@ const listDonutsAndToppings = (dataDonuts) => {
     });
 }
 
+const changeSaturatedDonut = (dataDonuts) => {
+    dataDonuts.forEach(donut => {
+         let newTrans = donut.nutrition_facts.nutrition.fat.fat_type.trans; 
+         if (donut.nutrition_facts.nutrition.cholesterol.amount > 10) {
+           newTrans = 3.2+"g"; 
+         }
+         console.log(`${donut.name}: ${newTrans}`);
+     });
+ }
 
-
+ const changeAmountCarbohydrateDonut = (dataDonuts) => {
+    dataDonuts.forEach(donut => {
+         let newAmount = donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.amount;
+         if (donut.nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars > 50) {
+           newAmount = 42+"g"; 
+         }
+         console.log(`${donut.name}: ${newAmount}`);
+     });
+ }
         // console.log(sugar.replace(/[^\d]/g, ''));
         //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)

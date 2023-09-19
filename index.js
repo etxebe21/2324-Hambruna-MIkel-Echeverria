@@ -23,6 +23,7 @@ const fetchAsyncData = async () => {
        changeAmountCarbohydrateDonut(dataDonuts);
        createNewVitamine(dataDonuts);
        changeDailyValueDonut(dataDonuts);
+       createAlergenAtribute(dataDonuts);
    
     }catch(error){
         console.log(error.message)
@@ -196,5 +197,21 @@ const changeDailyValueDonut = (dataDonuts) => {
     })
  }
 
-        // console.log(sugar.replace(/[^\d]/g, ''));
-        //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)
+const createAlergenAtribute = (dataDonuts) => {
+
+    dataDonuts.forEach(donut => {
+        if (donut.name === "Relaxing Alchemy") {
+           
+            const newAlergen = {
+                id: "1006",
+                type: "Gluten-Free",
+            };
+ 
+            donut.alergen = newAlergen;
+
+            console.log(`${donut.name} --> Alergen:` ,donut.alergen);
+        }
+    });
+}
+
+       

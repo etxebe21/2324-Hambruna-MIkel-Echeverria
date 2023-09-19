@@ -1,6 +1,6 @@
 import { getAllDonuts } from "./service.js";
 import { mostSugarDonuts, mostIronDonuts, mostProteinDonuts,minFibreDonuts } from "./fase1.js";
-import { listDonutsAndCalories, listDonutsAndCarbohydrates,donutsMediumCalories, sumFatSaturated } from "./fase2.js";
+import { listDonutsAndCalories, listDonutsAndCarbohydrates,donutsMediumCalories, sumFatSaturated,  donutsMediumVitamines} from "./fase2.js";
 import { listDonutsAndBatters, listDonutsAndToppings } from "./fase3.js";
 import { changeSaturatedDonut, changeAmountCarbohydrateDonut, createAlergenAtribute, changeDailyValueDonut, createNewVitamine } from "./fase5.js";
 
@@ -18,6 +18,7 @@ const fetchAsyncData = async () => {
        listDonutsAndCarbohydrates(dataDonuts);
        donutsMediumCalories(dataDonuts);
        sumFatSaturated(dataDonuts);
+       donutsMediumVitamines(dataDonuts);
        listDonutsAndBatters(dataDonuts);
        listDonutsAndToppings(dataDonuts);
        changeSaturatedDonut(dataDonuts);

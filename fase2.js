@@ -42,5 +42,44 @@ export const sumFatSaturated = (dataDonuts) => {
     });
 
     console.log(`La suma de grasas saturadas de todos los donuts es: ${totalSaturatedFat}g`);
-    console.log("3  --------------------------------------------------------------------------------------");
+    console.log("--------------------------------------------------------------------------------------");
+}
+
+export const donutsMediumVitamines = (dataDonuts) => {
+    let totalVitaminA = 0;
+    let totalVitaminC = 0;
+    let totalCalcium = 0;
+    let totalIron = 0;
+
+    dataDonuts.forEach(donut => {
+        const vitamines = donut.nutrition_facts.nutrition.vitamines;
+
+        vitamines.forEach(vitamin => {
+            switch (vitamin.type) {
+                case "Vitamin A":
+                    totalVitaminA += parseFloat(vitamin.percent);
+                    break;
+                case "Vitamin C":
+                    totalVitaminC += parseFloat(vitamin.percent);
+                    break;
+                case "Calcium":
+                    totalCalcium += parseFloat(vitamin.percent);
+                    break;
+                case "Iron":
+                    totalIron += parseFloat(vitamin.percent);
+                    break;
+            }
+        });
+    });
+
+    const mediumVitaminA = totalVitaminA / dataDonuts.length;
+    const mediumVitaminC = totalVitaminC / dataDonuts.length;
+    const mediumCalcium = totalCalcium / dataDonuts.length;
+    const mediumIron = totalIron / dataDonuts.length;
+
+    console.log(`Media de Vitamina A: ${mediumVitaminA}%`);
+    console.log(`Media de Vitamina C: ${mediumVitaminC}%`);
+    console.log(`Media de Calcio: ${mediumCalcium}%`);
+    console.log(`Media de Hierro: ${mediumIron}%`);
+    console.log("--------------------------------------------------------------------------------------");
 }

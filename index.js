@@ -21,6 +21,7 @@ const fetchAsyncData = async () => {
        listDonutsAndToppings(dataDonuts);
        changeSaturatedDonut(dataDonuts);
        changeAmountCarbohydrateDonut(dataDonuts);
+       createNewVitamine(dataDonuts);
        changeDailyValueDonut(dataDonuts);
    
     }catch(error){
@@ -169,8 +170,23 @@ const changeSaturatedDonut = (dataDonuts) => {
      });
  }
 
+const createNewVitamine = (dataDonuts) => {
 
- const changeDailyValueDonut = (dataDonuts) => {
+    dataDonuts.forEach(donut => {
+        if (donut.name === "Magic Fusion") {
+           
+            const newVitamin = {
+                type: "Nitacina",
+                percent: "0%", 
+            };
+            donut.nutrition_facts.nutrition.vitamines.push(newVitamin);
+            console.log(donut.name, donut.nutrition_facts.nutrition.vitamines);
+        }
+        
+    });
+}
+
+const changeDailyValueDonut = (dataDonuts) => {
 
 
     dataDonuts.forEach(donut => {
@@ -179,5 +195,6 @@ const changeSaturatedDonut = (dataDonuts) => {
         console.log(`${donut.name} --> Daily_value: ${newDailyValue}`);
     })
  }
+
         // console.log(sugar.replace(/[^\d]/g, ''));
         //console.log(dataDonuts.items.item[0].nutrition_facts.nutrition.carbohydrate.carbs_detail.type.sugars)
